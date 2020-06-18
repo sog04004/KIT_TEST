@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block title %}회원정보 페이지{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+<h2>회원정보 출력</h2>
+{% for i in data %}
+{{ loop.index }}. 이름: {{ i[2] }}, 아이디: {{ i[0] }}<br>
+{% endfor %}
+{% endblock %}

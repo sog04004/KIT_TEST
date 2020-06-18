@@ -1,0 +1,42 @@
+{% extends "layout_game.html" %}
+{% block title %}게임 페이지{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+{% if index==1 %}
+  <h2>게임 시작</h2>
+  {{ context }}<hr>
+  <a href={{ url_for('input_num', num=3) }}>다음으로</a>
+{% elif index==2 %}
+  <h2>게임 오버</h2>
+  당신은 사망 하였습니다.<hr>
+  <a href={{ url_for('input_num', num=1) }}>다시하기</a>
+{% elif index==3 %}
+  <h2>전투 모드</h2>
+  <img src={{ url_for('static', filename='mob1.jpg') }} width=400, height=300><br><br>
+  협곡의 여정 중에 {{ monster.name }}을(를) 만났습니다. 무엇을 하시겠습니까?<hr>
+  <a href={{ url_for('input_num', num=4) }}>1. 싸운다</a><br>
+  <a href={{ url_for('input_num', num=2) }}>2. 도망간다</a>
+{% elif index==4 %}
+  <h2>전투 모드</h2>
+  <img src={{ url_for('static', filename='mob1.jpg') }} width=400, height=300><br><br>
+  몬스터 이름 : {{ monster.name }}<br>
+  몬스터 체력 : {{ monster.hp }}
+  <hr>
+  {% if context!=NULL %}
+  <pre>{{ context }}</pre>
+  <hr>
+  {% endif %}
+  당신은 무엇을 하시겠습니까?<hr>
+  <a href={{ url_for('input_num', num=5) }}>1. 공격한다</a><br>
+  <a href={{ url_for('input_num', num=6) }}>2. 스킬사용</a><br>
+  <a href={{ url_for('input_num', num=2) }}>3. 도망간다</a>
+{% elif index==5 %}
+  <h2>게임 승리</h2>
+  당신은 승리 하셨습니다.<hr>
+  <a href="/">나가기</a>
+{% else %}
+  {{ context }}
+{% endif %}
+{% endblock %}

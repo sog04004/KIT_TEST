@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block title %}메인 페이지{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+  <h3>20160955 박철진</h3>
+  <p>소환사의 협곡에 오신걸 환영합니다.<br>로그인 하셔야 회원정보 열람과 게임을 하실 수 있습니다.</p>
+  <img src={{ url_for('static', filename='background.jpg') }}><br><br>
+{% endblock %}
